@@ -1,6 +1,17 @@
 ###comentarios del archivo Json####
+  
   "scripts": {
     // Indico que cuando se ejecute el comando "start", entonces de manera automatica
        se nos ejecute el comando "node index.js"
+    //Para ejecutar este comando solo se debe escribir "npm start"
     "start": "node index.js"
   }
+
+   "scripts": {
+    "start": "node index.js",
+    //aca cambio la opcion y configuro que se me ejecute el comando nodemon, este lo que hace
+      a diferencia de solo dejarlo estar, recordemos que es un modulo, pues este ayuda en 
+      ir guardando los cambios automaticamente que vayamos realizando.
+    //Para ejecutar este comando solo se debe escribir "npm run dev"
+    "dev": "nodemon index.js"
+  },
