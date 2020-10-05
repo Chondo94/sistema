@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Chondo94/sistema/issues"
   },
-  "homepage": "https://github.com/Chondo94/sistema#readme"
+  "homepage": "https://github.com/Chondo94/sistema#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
