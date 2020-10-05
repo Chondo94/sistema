@@ -1,0 +1,6 @@
+###comentarios del archivo Json####
+  "scripts": {
+    // Indico que cuando se ejecute el comando "start", entonces de manera automatica
+       se nos ejecute el comando "node index.js"
+    "start": "node index.js"
+  }
