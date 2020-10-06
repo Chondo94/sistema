@@ -15,3 +15,9 @@
     //Para ejecutar este comando solo se debe escribir "npm run dev"
     "dev": "nodemon index.js"
   },
+
+
+  //Morgan, nos sirve para para ver desde la consola las peticiones que nos viene desde el navegador o apliciones cliente.
+
+  //Cors es un paquete nodejs para proporcionar un middlewares con express, que se puede utilizar para usar cors con varias opciones
+    Cors lo que va hacer es permiter que se realicen peticiones a nuestro servidor desde otras computadoras, son peticiones remotas.
