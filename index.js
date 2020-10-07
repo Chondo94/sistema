@@ -14,6 +14,7 @@ const cors=require('cors');
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import path from 'path';
 
 /* 
 const app=express();
@@ -32,6 +33,9 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+// dirname es una constante que me proporciona node.js para ver el nombre del directorio que estoy utilizando
+// en este caso es el directorio del archivo index.js
+app.use(express.static(path.join(__dirname,'public')));
 
 /*  con mi objeto, creo listen para que me escuche en el puerto 300 o en el puerto que es 
     asigando por mi servidor y luego paso a que me ejecute una funcion donde quier que me muestre un mensaje por consola. 
@@ -48,6 +52,7 @@ app.set('port',process.env.PORT || 3000);
 
 app.listen(app.get('port'),()=>{
     console.log('server on port ' + app.get('port'));
+    
 });
 
 ////////////////////////////////////
