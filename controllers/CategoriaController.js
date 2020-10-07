@@ -46,7 +46,18 @@ export default {
     list: async (req,res,next) => {
         try {
             let valor=req.query.valor;
-            const reg=await models.Categoria.find({});
+            /* 
+              Aca vamos a consultar nuestros documentos creados en categoria, pero utilizaremos la funcion de RegExp, la cual nos va
+              servir para que al momento de listar si le especificamos alguna palabra, muestre la lista segun esa palabra que se 
+              escribe, eso es aplicado tanto en el nombre como en la descripcion, al inicio agrego el metodo $or con el fin de 
+              especificar que esto se va aplicar en dos campos (nombre o descripcion), tambien veamo el parametro ('i'), este lo que 
+              indica es que tome en cuenta la coincidencia entre mayusculas y minusculas y todo esta verificacion se va a realizar 
+              enviando un parametro valor, que en este caso lo he declarado arriba (let valor), con base a lo que guarde ese parametro 
+              que es el texto que yo le mando, es que se va ahir realizando la busqueda y va mostrar si lo que tenga coincidencia.
+            */
+            const reg=await models.Categoria.find({$or:[{'nombre':new RegExp(valor,'i')},{'descripcion':new RegExp(valor,'i')}]},{createdAt:0})
+            // ordeno los campos de manera descendente con .sort y -1, esto va hacer con basen en la creacion del documento (createdAt).
+            .sort({'createdAt':-1});
             res.status(200).json(reg);
         } catch(e){
             res.status(500).send({
