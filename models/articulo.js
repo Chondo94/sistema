@@ -4,7 +4,7 @@ import mongoose,{Schema} from 'mongoose';
 // Creo el esquema
 const articuloSchema = new Schema({
     // defino las propiedades del esquema, y las caracteristicas de las propiedades
-    // aca hago la relacion con mi modelo categoria
+    // aca hago referencia a mi modelo categoria
     categoria: {type: Schema.ObjectId, ref:'categoria'},
     // sigo definiendo las caracteristicas o tipos de nuestras propiedades(codigo,nobre,descripcion,etc.)
     codigo: {type: String,maxlength:64},
