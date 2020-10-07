@@ -16,6 +16,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
+import router from './routes';
 
 /* 
 const app=express();
@@ -56,6 +57,9 @@ app.listen(app.get('por'),()=>{
 });
  */
 
+// aca lo que indico es que cuando coloque en mi navegador localhost:300/api, quien va gestionar es el modelo router
+// en si va gestionar el archivo index.js de la carpeta routes.
+app.use('/api',router); 
 app.set('port',process.env.PORT || 3000);
 
 
@@ -84,7 +88,6 @@ mongoose.connect(dbUrl, {useCreateIndex:true, useNewUrlParser: true})
 
 app.use(express.static(path.join(__dirname,'public')))
 
-app.use('/api',router);
 
 });
  */
