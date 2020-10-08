@@ -105,7 +105,7 @@ export default {
     },
     login: async (req,res,next) => {
         try {
-            // Verificamos que el usuario que intenta ingresar al sistema, este registrado
+            // Verificamos que el usuario que intenta ingresar al sistema, este registrado y que este usuario este activo
             let user = await models.Usuario.findOne({email:req.body.email,estado:1});
             // Si el usuario existe va entrar en esta estructura condicional
             if (user){
