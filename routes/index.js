@@ -7,6 +7,7 @@ import categoriaRouter from './categoria';
 // importo el objeto de articuloRoute, yo le doy el nombre de articuloRouter haciendo referencias a las rutas que tengo en articulo
 import articuloRouter from './articulo';
 import usuarioRouter from './usuario';
+import personaRouter from './persona'
 
 // declaro mi contaste router
 const router=routerx();
@@ -16,4 +17,5 @@ const router=routerx();
 router.use('/categoria',categoriaRouter);
 router.use('/articulo',articuloRouter);
 router.use('/usuario',usuarioRouter);
+router.use('/persona',personaRouter);
 export default router;
