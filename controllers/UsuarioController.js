@@ -1,6 +1,8 @@
 import models from '../models';
 // importamos el modulo bcryptjs en un objeto bcrypt, esto nos sirve para encriptar las contraseñas
 import bcrypt from 'bcryptjs';
+// importamo nuesta configuracion de token
+import token from '../services/token'
 
 export default {
     add: async (req,res,next) =>{
@@ -94,6 +96,35 @@ export default {
         try {
             const reg = await models.Usuario.findByIdAndUpdate({_id:req.body._id},{estado:0});
             res.status(200).json(reg);
+        } catch(e){
+            res.status(500).send({
+                message:'Ocurrió un error'
+            });
+            next(e);
+        }
+    },
+    login: async (req,res,next) => {
+        try {
+            // Verificamos que el usuario que intenta ingresar al sistema, este registrado
+            let user = await models.Usuario.findOne({email:req.body.email,estado:1});
+            // Si el usuario existe va entrar en esta estructura condicional
+            if (user){
+                // con la variable match comparo si el password es correcto o igual al que se esta escribiendo
+                let match = await bcrypt.compare(req.body.password,user.password);
+                if (match){
+                    let tokenReturn = await token.encode(user._id);
+                    res.status(200).json({user,tokenReturn});
+                } else{
+                    res.status(404).send({
+                        message: 'Password Incorrecto'
+                    });
+                }
+                // Si el email no existe, va enviar un mensaje diciendo que no existe el usuario 
+            } else{
+                res.status(404).send({
+                    message: 'No existe el usuario'
+                });
+            }
         } catch(e){
             res.status(500).send({
                 message:'Ocurrió un error'
